@@ -1,0 +1,44 @@
+{
+	"id": "8fbe222c-44fb-40b8-b8ec-ed7ae342272a",
+	"name": "loblaw_environment_PaymentQA",
+	"values": [
+		{
+			"key": "host",
+			"value": "https://payment-method-authority-service-qa.loblaw.digital/paymentmethodauthority",
+			"enabled": true
+		},
+		{
+			"key": "username/email",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "wallet_id",
+			"value": "789",
+			"enabled": true
+		},
+		{
+			"key": "payment_methodId",
+			"value": "tosh7865-494d44dc-72f8-40f4-aadb-c928b6d898f4",
+			"enabled": true
+		},
+		{
+			"key": "expired_yearID",
+			"value": "789-8af5fd5f-aa41-4528-a6f1-cb9c237d1d8f",
+			"enabled": true
+		},
+		{
+			"key": "wallet_id2",
+			"value": "tosh123",
+			"enabled": true
+		},
+		{
+			"key": "wallet_id3",
+			"value": "tosh7865",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-09-20T16:36:38.783Z",
+	"_postman_exported_using": "Postman/8.12.5"
+}

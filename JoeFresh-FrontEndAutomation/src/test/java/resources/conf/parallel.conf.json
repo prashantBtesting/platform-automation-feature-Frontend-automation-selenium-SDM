@@ -1,0 +1,24 @@
+{
+  "server": "hub.browserstack.com",
+  "user": "gargisanadhya_a0Z8k1",
+  "key": "KrJpoiczm18JpyUxUJaG",
+
+  "capabilities": {
+    "bstack:options": {
+      "buildName": "JoeFresh",
+      "debug": "true"
+    }
+  },
+
+  "environments": [
+    {
+      "browserName": "chrome"
+    },
+    {
+      "browserName": "firefox"
+    },
+    {
+      "browserName": "safari"
+    }
+  ]
+}

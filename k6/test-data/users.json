@@ -1,0 +1,17 @@
+[
+	{
+		"address": {
+	"firstName": "Test",
+	"lastName": "Account",
+	"addressLine1": "31-2050 Gladwin Rd",
+	"addressLine2": "",
+	"phoneNumber": "",
+	"city": "Abbotsford",
+	"province": "BC",
+	"countryCode": "CA",
+	"postalCode": "V2S4P8",
+	"visibleInAddressBook": false
+},
+		"email": "test1309@yopmail.com"
+	}
+]

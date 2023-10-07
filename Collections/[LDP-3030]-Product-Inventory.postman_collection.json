@@ -1,0 +1,3691 @@
+{
+	"info": {
+		"_postman_id": "72a1cf2a-88dd-4676-8161-e6129b1dd6d0",
+		"name": "Inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17168410"
+	},
+	"item": [
+		{
+			"name": "POST Inventory List",
+			"item": [
+				{
+					"name": "Inventory Domain - [TC-2]- [P] - Verify an API behaviour to get inventory list with tanent id as JOE_FRESH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"F0BK013870001_EA\"\n      \n    },\n    {\n      \"liam\": \"F1WP020688006_EA\"\n    },\n    {\n      \"liam\": \"F1WR021170007_EA\"\n    }\n    \n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-3]- [P] - Verify an API behaviour to get inventory list with tanent id as MARKETPLACE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "MARKETPLACE",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-4]- [P] - Verify an API behaviour to get inventory list with tanent id as SHOPPERS_DRUG_MART",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "SHOPPERS_DRUG_MART",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-5]- [P] - Verify an API behaviour to get inventory list with tanent id as non required feild",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate tanent as non required', function(){",
+									"    pm.expect(responseData.error_response.details).to.eql(\"400 BAD_REQUEST \\\"Missing request header 'X-Loblaw-Tenant-ID' for method parameter of type TenantType\\\"\")",
+									"    ",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "SHOPPERS_DRUG_MART",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-6]- [N] - Verify an API behaviour to get inventory list with tanent id as string null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate tanent as null', function(){",
+									"    pm.expect(responseData.error_response.details).to.eql(\"400 BAD_REQUEST \\\"Missing request header 'X-Loblaw-Tenant-ID' for method parameter of type TenantType\\\"\")",
+									"    ",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-7]- [N] - Verify an API behaviour to get inventory list with tanent id as invalid data \"ABDC\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate tanent as invalid', function(){",
+									"    pm.expect(responseData.error_response.details).to.include(\"400 BAD_REQUEST \\\"Type mismatch.\\\"; nested exception is org.springframework.beans.TypeMismatchException:\")",
+									"    ",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ABCD",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-8]- [N] - Verify an API behaviour to get inventory list with content type as null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 415 Unsupported Media Type', function(){",
+									"    pm.response.to.have.status(415)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate content type as null', function(){",
+									"    pm.expect(responseData.error).to.include(\"Unsupported Media Type\")",
+									"    ",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-9]- [N] - Verify an API behaviour to get inventory list with content type as integer 1234",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 404 Not Found', function(){",
+									"    pm.response.to.have.status(404)",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "1234",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/v1/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-10]- [N] - Verify an API behaviour to get inventory list with content type as not required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "1234",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-14]- [P] - Verify an API behaviour to get inventory list with Lowblaw-Mock-Data as false",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-15]- [P] - Verify an API behaviour to get inventory list with Lowblaw-Mock-Data as 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-16]- [P] - Verify an API behaviour to get inventory list with Lowblaw-Mock-Data as 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-17]- [N] - Verify an API behaviour to get inventory list with Lowblaw-Mock-Data as string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 404 Not Found', function(){",
+									"pm.response.to.have.status(404)",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "abcd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014554\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}inventory/list",
+							"host": [
+								"{{inventoryurl}}inventory"
+							],
+							"path": [
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-18]- [P] - Verify an API behaviour to get inventory list with liam number as a string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"hello\"\n      \n    },\n    {\n      \"liam\": \"hi\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-19]- [N] - Verify an API behaviour to get inventory list with liam number as a invalid number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"0413601455456666_KG\"\n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-20.1]- [P] - Verify an API behaviour to get inventory list with liam number as a the exact number which is already occupied in reserve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-20.2]- [P] - Verify an API behaviour to get inventory list with liam number as a the exact number which is already occupied in reserve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014560_EA\"\n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-22.1]- [P] - Verify an API behaviour to get inventory list with liam number as a the exact number which is now not present in the reserve but in the delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 500 Internal Server Error', function(){",
+									"pm.response.to.have.status(500)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate error message', function(){",
+									"pm.expect(responseData.error_response.message).to.include(\"Unknown error processing the request\")",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-22.2]- [P] - Verify an API behaviour to get inventory list with liam number as a the exact number which is now not present in the reserve but in the delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"04136014560_EA\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-23]- [P] - Verify an API behaviour to get inventory list with liam number as a string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"Hello\"\n      \n    },\n    {\n      \"liam\": \"04136029800_KG\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-25]- [N] - Verify an API behaviour to get inventory list with liam in body is 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-26]- [P] - Verify an API behaviour to get inventory list with liam number in body is 10 and all the items hae same lium number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseSchema'))",
+									"",
+									"responseBody.response.inventories.forEach(function(index){",
+									"pm.test('Validate Suggestions in Product', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"0413601455456666\"\n      \n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    },\n    {\n      \"liam\": \"0413601455456666\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-27]- [N] - Verify an API behaviour to get inventory list with liam number as null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inventories\": [\n    {\n      \"liam\": \"\"\n      \n    },\n    {\n      \"liam\": \"\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/list",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const responseSchema = {",
+							"  ",
+							"  \"type\": \"object\",",
+							"  \"properties\": {",
+							"    \"response\": {",
+							"      \"type\": \"object\",",
+							"      \"properties\": {",
+							"        \"inventories\": {",
+							"          \"type\": \"array\",",
+							"          \"items\": [",
+							"            {",
+							"              \"type\": \"object\",",
+							"              \"properties\": {",
+							"                \"liam\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"stock\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"timeslot\": {",
+							"                  \"type\": \"string\"",
+							"                }",
+							"              }",
+							"            }",
+							"          ]",
+							"        }",
+							"      }",
+							"    }",
+							"  }",
+							"}",
+							"pm.environment.set('responseSchema', JSON.stringify(responseSchema));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "POST Inventory Reserve",
+			"item": [
+				{
+					"name": "Inventory Domain - [TC-1]- [P] - Verify an API behaviour to get inventory reserve with tanent id as ONLINE_GROCERIES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 404 Not Found', function(){",
+									"    pm.response.to.have.status(404)",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-2]- [P] - Verify an API behaviour to get inventory reserve with tanent id as JOE_FRESH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12355\",\n  \"reservations\": [\n    {\n      \"liam\": \"F0BK013870001_EA\",\n      \"stock\": \"6\",\n      \"store\": \"1234\"\n    },\n     {\n      \"liam\": \"Y0WR019169015_EA\",\n      \"stock\": \"6\",\n      \"store\": \"1234\"\n    }\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-3]- [P] - Verify an API behaviour to get inventory reserve with tanent id as MARKETPLACE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "MARKETPLACE",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-4]- [P] - Verify an API behaviour to get inventory reserve with tanent id as SHOPPERS_DRUG_MART",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "SHOPPERS_DRUG_MART",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-5]- [N] - Verify an API behaviour to get inventory reserve with tanent id as non required feild",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate error message', function(){",
+									"    pm.expect(responseData.error_response.details).to.eql(\"400 BAD_REQUEST \\\"Missing request header 'X-Loblaw-Tenant-ID' for method parameter of type TenantType\\\"\")",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-6]- [N] - Verify an API behaviour to get inventory reserve with tanent id as string null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate error message', function(){",
+									"    pm.expect(responseData.error_response.details).to.eql(\"400 BAD_REQUEST \\\"Missing request header 'X-Loblaw-Tenant-ID' for method parameter of type TenantType\\\"\")",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-7]- [N] - Verify an API behaviour to get inventory reserve with tanent id as invalid data \"ABDC\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate error message', function(){",
+									"    pm.expect(responseData.error_response.details).to.include(\"400 BAD_REQUEST \")",
+									"    ",
+									"})",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "abcd",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-8]- [N] - Verify an API behaviour to get inventory reserve with Loblaw-Idempotent-Key type as null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-9]- [N] - Verify an API behaviour to get inventory reserve with Loblaw-Idempotent-Key type as integer 1234",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "1234",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-10]- [N] - Verify an API behaviour to get inventory reserve with Loblaw-Idempotent-Key type as not required",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"pm.response.to.have.status(400)",
+									"})",
+									"",
+									"var responseData = pm.response.json();",
+									"",
+									"pm.test('Validate error message', function(){",
+									"pm.expect(responseData.error_response.details).to.include(\"400 BAD_REQUEST \")",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-14]- [P] - Verify an API behaviour to get inventory reserve with Lowblaw-Mock-Data as false",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-15]- [P] - Verify an API behaviour to get inventory reserve with Lowblaw-Mock-Data as 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-16]- [P] - Verify an API behaviour to get inventory reserve with Lowblaw-Mock-Data as 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-17]- [N] - Verify an API behaviour to get inventory reserve with Lowblaw-Mock-Data as string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "abcd",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-18]- [P] - Verify an API behaviour to get inventory reserve with liam number as a string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"abvd\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-19]- [N] - Verify an API behaviour to get inventory reserve with liam number as a invalid number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-20]- [P] - Verify an API behaviour to get inventory reserve with liam number as a the exact number which is already present in list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-21]- [P] - Verify an API behaviour to get inventory reserve with liam number as the greater number which is there in list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"9\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-22]- [N] - Verify an API behaviour to get inventory reserve with liam in body is 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    \n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-23]- [N] - Verify an API behaviour to get inventory reserve with liam number in body is 10 and all the items have same lium number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 409 Conflict', function(){",
+									"    pm.response.to.have.status(409)",
+									"})",
+									"",
+									"var responseBody = pm.response.json();",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console,  allErrors: true});",
+									"",
+									"var schema = JSON.parse(pm.environment.get('responseData'))",
+									"",
+									"responseBody.response.low_stock_liams.forEach(function(index){",
+									"pm.test('Validate Reserve', function(){",
+									"    pm.expect(ajv.validate(schema, index)).to.be.true;",
+									"})",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },{\n      \"liam\": \"04136014799_KG\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-24]- [N] - Verify an API behaviour to get inventory reserve with liam number as null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 400 Bad Request', function(){",
+									"    pm.response.to.have.status(400)",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://inventory-data-service-dev.loblaw.digital/v1/inventory/reserve",
+							"protocol": "https",
+							"host": [
+								"inventory-data-service-dev",
+								"loblaw",
+								"digital"
+							],
+							"path": [
+								"v1",
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const responseData = {",
+							"",
+							"\"type\": \"object\",",
+							"\"properties\": {",
+							"\"response\": {",
+							"\"type\": \"object\",",
+							"\"properties\": {",
+							"\"order\": {",
+							"    \"type\": \"string\"",
+							"},",
+							"\"low_stock_liams\": {",
+							"\"type\": \"array\",",
+							"\"items\": [",
+							"{",
+							"\"type\": \"object\",",
+							"\"properties\": {",
+							"\"liam\": {",
+							"\"type\": \"string\"",
+							"},",
+							"\"stock\": {",
+							"\"type\": \"string\"",
+							"},",
+							"\"timeslot\": {",
+							"\"type\": \"string\"",
+							"},",
+							"\"store\": {",
+							"\"type\": \"string\"",
+							"}",
+							"",
+							"}",
+							"}",
+							"]",
+							"}",
+							"}",
+							"}",
+							"}",
+							"}",
+							"",
+							"pm.environment.set('responseData', JSON.stringify(responseData));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "DEL Inventory Release",
+			"item": [
+				{
+					"name": "Inventory Domain - [TC-1]- [P] - Verify an API behaviour to get inventory delete with tanent id as ONLINE_GROCERIES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"pm.response.to.have.status(200)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "ONLINE_GROCERIES",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-2]- [P] - Verify an API behaviour to get inventory delete with tanent id as JOE_FRESH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"pm.response.to.have.status(200)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "false",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12355\",\n  \"reservations\": [\n    {\n      \"liam\": \"F0BK013870001_EA\",\n      \"stock\": \"6\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-3]- [P] - Verify an API behaviour to get inventory delete with tanent id as MARKETPLACE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"pm.response.to.have.status(200)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "MARKETPLACE",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-4]- [P] - Verify an API behaviour to get inventory delete with tanent id as SHOPPERS_DRUG_MART",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory Domain - [TC-5]- [P] - Verify an API behaviour to get inventory delete with tanent id as non required feild",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status Code | 200 OK', function(){",
+									"pm.response.to.have.status(200)",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Idempotent-Key",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Mock-Data",
+								"value": "true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order\": \"O12345\",\n  \"reservations\": [\n    {\n      \"liam\": \"04136014560_EA\",\n      \"stock\": \"1\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136029449_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    },\n    {\n      \"liam\": \"04136014565_EA\",\n      \"stock\": \"10\",\n      \"store\": \"1234\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inventoryurl}}/inventory/reserve",
+							"host": [
+								"{{inventoryurl}}"
+							],
+							"path": [
+								"inventory",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "inventoryurl",
+			"value": "https://inventory-data-service-dev.loblaw.digital/v1"
+		}
+	]
+}

@@ -1,0 +1,3199 @@
+{
+	"info": {
+		"_postman_id": "d8490a69-e0a7-4071-be11-4d6c2799fb74",
+		"name": "Loblaw_Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST | Payment Method",
+			"item": [
+				{
+					"name": "Payment Domain [TC-13]- Verify an API behaviour to POST the  payment method with the valid data set .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"const schema = {",
+									"   ",
+									"    \"$id\": \"http://example.com/example.json\",",
+									"    \"type\": \"object\",",
+									"    \"default\": {},",
+									"    \"title\": \"Root Schema\",",
+									"    \"required\": [",
+									"        \"payment_method_type\",",
+									"        \"payment_method_id\",",
+									"        \"customer_reference_id_at_payment_provider\",",
+									"        \"card_holder_name\",",
+									"        \"card_type\",",
+									"        \"last_4_digits\",",
+									"        \"expiry_month\",",
+									"        \"expiry_year\",",
+									"        \"number_length\",",
+									"        \"payment_provider\",",
+									"        \"created_by_tenant_id\",",
+									"        \"billing_address\",",
+									"        \"is_default_payment_method\",",
+									"        \"is_shared_across_tenants\",",
+									"        \"is_deleted\",",
+									"        \"is_saved\",",
+									"        \"is_expired\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"payment_method_type\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_method_type Schema\",",
+									"            \"examples\": [",
+									"                \"payment-card\"",
+									"            ]",
+									"        },",
+									"        \"payment_method_id\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_method_id Schema\",",
+									"            \"examples\": [",
+									"                \"tosh123-80c17292-29f7-41ed-ad93-1743c8c82bf7\"",
+									"            ]",
+									"        },",
+									"        \"customer_reference_id_at_payment_provider\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The customer_reference_id_at_payment_provider Schema\",",
+									"            \"examples\": [",
+									"                \"gdujeed5237\"",
+									"            ]",
+									"        },",
+									"        \"card_holder_name\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The card_holder_name Schema\",",
+									"            \"examples\": [",
+									"                \" user 452\"",
+									"            ]",
+									"        },",
+									"        \"card_type\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The card_type Schema\",",
+									"            \"examples\": [",
+									"                \"MasterCard\"",
+									"            ]",
+									"        },",
+									"        \"last_4_digits\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The last_4_digits Schema\",",
+									"            \"examples\": [",
+									"                \"4448\"",
+									"            ]",
+									"        },",
+									"        \"expiry_month\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The expiry_month Schema\",",
+									"            \"examples\": [",
+									"                \"12\"",
+									"            ]",
+									"        },",
+									"        \"expiry_year\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The expiry_year Schema\",",
+									"            \"examples\": [",
+									"                \"2022\"",
+									"            ]",
+									"        },",
+									"        \"number_length\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The number_length Schema\",",
+									"            \"examples\": [",
+									"                \"16\"",
+									"            ]",
+									"        },",
+									"        \"payment_provider\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_provider Schema\",",
+									"            \"examples\": [",
+									"                \"global_payments\"",
+									"            ]",
+									"        },",
+									"        \"created_by_tenant_id\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The created_by_tenant_id Schema\",",
+									"            \"examples\": [",
+									"                \"JOE_FRESH\"",
+									"            ]",
+									"        },",
+									"        \"billing_address\": {",
+									"            \"type\": \"object\",",
+									"            \"default\": {},",
+									"            \"title\": \"The billing_address Schema\",",
+									"            \"required\": [",
+									"                \"address_id\",",
+									"                \"version\"",
+									"            ],",
+									"            \"properties\": {",
+									"                \"address_id\": {",
+									"                    \"type\": \"string\",",
+									"                    \"default\": \"\",",
+									"                    \"title\": \"The address_id Schema\",",
+									"                    \"examples\": [",
+									"                        \"0090151912aaqy\"",
+									"                    ]",
+									"                },",
+									"                \"version\": {",
+									"                    \"type\": \"string\",",
+									"                    \"default\": \"\",",
+									"                    \"title\": \"The version Schema\",",
+									"                    \"examples\": [",
+									"                        \"2\"",
+									"                    ]",
+									"                }",
+									"            },",
+									"            \"examples\": [{",
+									"                \"address_id\": \"0090151912aaqy\",",
+									"                \"version\": \"2\"",
+									"            }]",
+									"        },",
+									"        \"is_default_payment_method\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_default_payment_method Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        },",
+									"        \"is_shared_across_tenants\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_shared_across_tenants Schema\",",
+									"            \"examples\": [",
+									"                true",
+									"            ]",
+									"        },",
+									"        \"is_deleted\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_deleted Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        },",
+									"        \"is_saved\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_saved Schema\",",
+									"            \"examples\": [",
+									"                true",
+									"            ]",
+									"        },",
+									"        \"is_expired\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_expired Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        }",
+									"    },",
+									"    \"examples\": [{",
+									"        \"payment_method_type\": \"payment-card\",",
+									"        \"payment_method_id\": \"tosh123-80c17292-29f7-41ed-ad93-1743c8c82bf7\",",
+									"        \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",",
+									"        \"card_holder_name\": \" user 452\",",
+									"        \"card_type\": \"MasterCard\",",
+									"        \"last_4_digits\": \"4448\",",
+									"        \"expiry_month\": \"12\",",
+									"        \"expiry_year\": \"2022\",",
+									"        \"number_length\": \"16\",",
+									"        \"payment_provider\": \"global_payments\",",
+									"        \"created_by_tenant_id\": \"JOE_FRESH\",",
+									"        \"billing_address\": {",
+									"            \"address_id\": \"0090151912aaqy\",",
+									"            \"version\": \"2\"",
+									"        },",
+									"        \"is_default_payment_method\": false,",
+									"        \"is_shared_across_tenants\": true,",
+									"        \"is_deleted\": false,",
+									"        \"is_saved\": true,",
+									"        \"is_expired\": false",
+									"    }]",
+									"}",
+									"",
+									"pm.test(\"validate schema\", function () {",
+									"pm.response.to.have.jsonSchema(schema);",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"seema\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"969929\",\r\n    \"last_4_digits\": \"3033\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2023\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id3}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id3}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-14]- Verify an API behaviour to POST another  payment method with the valid data set .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user7536\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"752965\",\r\n    \"last_4_digits\": \"4852\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2009\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id3}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id3}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-15]- Verify an API behaviour to POST the  payment method with the valid data set in the mandatory fields .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"const schema= {",
+									"    ",
+									"    \"$id\": \"http://example.com/example.json\",",
+									"    \"type\": \"object\",",
+									"    \"default\": {},",
+									"    \"title\": \"Root Schema\",",
+									"    \"required\": [",
+									"        \"payment_method_type\",",
+									"        \"payment_method_id\",",
+									"        \"customer_reference_id_at_payment_provider\",",
+									"        \"card_holder_name\",",
+									"        \"card_type\",",
+									"        \"last_4_digits\",",
+									"        \"expiry_month\",",
+									"        \"expiry_year\",",
+									"        \"number_length\",",
+									"        \"payment_provider\",",
+									"        \"created_by_tenant_id\",",
+									"        \"billing_address\",",
+									"        \"is_default_payment_method\",",
+									"        \"is_shared_across_tenants\",",
+									"        \"is_deleted\",",
+									"        \"is_saved\",",
+									"        \"is_expired\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"payment_method_type\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_method_type Schema\",",
+									"            \"examples\": [",
+									"                \"payment-card\"",
+									"            ]",
+									"        },",
+									"        \"payment_method_id\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_method_id Schema\",",
+									"            \"examples\": [",
+									"                \"789-771ab36c-3cc6-41c8-a136-01b759b1e296\"",
+									"            ]",
+									"        },",
+									"        \"customer_reference_id_at_payment_provider\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The customer_reference_id_at_payment_provider Schema\",",
+									"            \"examples\": [",
+									"                \"gdujeed5237\"",
+									"            ]",
+									"        },",
+									"        \"card_holder_name\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The card_holder_name Schema\",",
+									"            \"examples\": [",
+									"                \"test user 2\"",
+									"            ]",
+									"        },",
+									"        \"card_type\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The card_type Schema\",",
+									"            \"examples\": [",
+									"                \"Visa\"",
+									"            ]",
+									"        },",
+									"        \"last_4_digits\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The last_4_digits Schema\",",
+									"            \"examples\": [",
+									"                \"4448\"",
+									"            ]",
+									"        },",
+									"        \"expiry_month\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The expiry_month Schema\",",
+									"            \"examples\": [",
+									"                \"12\"",
+									"            ]",
+									"        },",
+									"        \"expiry_year\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The expiry_year Schema\",",
+									"            \"examples\": [",
+									"                \"2024\"",
+									"            ]",
+									"        },",
+									"        \"number_length\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The number_length Schema\",",
+									"            \"examples\": [",
+									"                \"16\"",
+									"            ]",
+									"        },",
+									"        \"payment_provider\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The payment_provider Schema\",",
+									"            \"examples\": [",
+									"                \"global_payments\"",
+									"            ]",
+									"        },",
+									"        \"created_by_tenant_id\": {",
+									"            \"type\": \"string\",",
+									"            \"default\": \"\",",
+									"            \"title\": \"The created_by_tenant_id Schema\",",
+									"            \"examples\": [",
+									"                \"JOE_FRESH\"",
+									"            ]",
+									"        },",
+									"        \"billing_address\": {",
+									"            \"type\": \"object\",",
+									"            \"default\": {},",
+									"            \"title\": \"The billing_address Schema\",",
+									"            \"required\": [",
+									"                \"address_id\",",
+									"                \"version\"",
+									"            ],",
+									"            \"properties\": {",
+									"                \"address_id\": {",
+									"                    \"type\": \"string\",",
+									"                    \"default\": \"\",",
+									"                    \"title\": \"The address_id Schema\",",
+									"                    \"examples\": [",
+									"                        \"0090151912aaqy\"",
+									"                    ]",
+									"                },",
+									"                \"version\": {",
+									"                    \"type\": \"string\",",
+									"                    \"default\": \"\",",
+									"                    \"title\": \"The version Schema\",",
+									"                    \"examples\": [",
+									"                        \"2\"",
+									"                    ]",
+									"                }",
+									"            },",
+									"            \"examples\": [{",
+									"                \"address_id\": \"0090151912aaqy\",",
+									"                \"version\": \"2\"",
+									"            }]",
+									"        },",
+									"        \"is_default_payment_method\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_default_payment_method Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        },",
+									"        \"is_shared_across_tenants\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_shared_across_tenants Schema\",",
+									"            \"examples\": [",
+									"                true",
+									"            ]",
+									"        },",
+									"        \"is_deleted\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_deleted Schema\",",
+									"            \"examples\": [",
+									"                true",
+									"            ]",
+									"        },",
+									"        \"is_saved\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_saved Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        },",
+									"        \"is_expired\": {",
+									"            \"type\": \"boolean\",",
+									"            \"default\": false,",
+									"            \"title\": \"The is_expired Schema\",",
+									"            \"examples\": [",
+									"                false",
+									"            ]",
+									"        }",
+									"    },",
+									"    \"examples\": [{",
+									"        \"payment_method_type\": \"payment-card\",",
+									"        \"payment_method_id\": \"789-771ab36c-3cc6-41c8-a136-01b759b1e296\",",
+									"        \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",",
+									"        \"card_holder_name\": \"test user 2\",",
+									"        \"card_type\": \"Visa\",",
+									"        \"last_4_digits\": \"4448\",",
+									"        \"expiry_month\": \"12\",",
+									"        \"expiry_year\": \"2024\",",
+									"        \"number_length\": \"16\",",
+									"        \"payment_provider\": \"global_payments\",",
+									"        \"created_by_tenant_id\": \"JOE_FRESH\",",
+									"        \"billing_address\": {",
+									"            \"address_id\": \"0090151912aaqy\",",
+									"            \"version\": \"2\"",
+									"        },",
+									"        \"is_default_payment_method\": false,",
+									"        \"is_shared_across_tenants\": true,",
+									"        \"is_deleted\": true,",
+									"        \"is_saved\": false,",
+									"        \"is_expired\": false",
+									"    }]",
+									"}",
+									"",
+									"pm.test(\"validate schema\", function () {",
+									"pm.response.to.have.jsonSchema(schema);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"\",\r\n    \"card_holder_name\": \"test user 2\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id3}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id3}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-16]- Verify an API behaviour to POST the  payment method with the valid data set but no wallet ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"\",\r\n    \"card_holder_name\": \"test user 2\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets//payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-17]- Verify an API behaviour to POST the same  payment method with the valid data set .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"test user 2\",\r\n    \"card_type\": \"MasterCard\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-18]- Verify an API behaviour to POST the  payment method with no data in the mandatory fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"PaymentMethodType is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"\",\r\n    \"card_type\": \"\",\r\n    \"first_6_digits\": \"\",\r\n    \"last_4_digits\": \"\",\r\n    \"expiry_month\": \"\",\r\n    \"expiry_year\": \"\",\r\n    \"number_length\": \"\",\r\n    \"token\": \"\",\r\n    \"payment_provider\": \"\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"\",\r\n        \"version\": \"\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-19]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no card type.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Missing or Invalid CardType\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"test user 2\",\r\n    \"card_type\": \"\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-20]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no payment method type.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"PaymentMethodType is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"test user 2\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-21]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no card holder name.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"CardHolderName is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"666666\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-22]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no 6 digit card.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"First6Digits should have 6 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"\",\r\n    \"last_4_digits\": \"4448\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-23]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no 4 digit card.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Last4Digits should have 4 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-24]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no expiry month.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ExpiryMonth should have at least 2 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"\",\r\n    \"expiry_year\": \"2024\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-25]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no expiry year.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"ExpiryYear should have 4 characters\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-26]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no token type.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Token is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2021\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-27]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no paymnet Provider.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\" PaymentProvider is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2021\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-28]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no address ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"AddressID should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2021\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-29]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but no address version.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Bad Request\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Version should not be empty\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2021\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-30]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but 'is saved ' flag is false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2026\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-31]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but 'is saved ' flag is true.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2029\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-32]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but 'is deleted' flag is true.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2029\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-32]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but 'is deleted' flag is false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user 92\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"257438\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2032\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": false,\r\n    \"is_saved\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-33]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but \"is_shared_across_tenants\"' flag is true",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2025\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-34]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but \"is_shared_across_tenants\"' flag is false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2029\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"21\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": false,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-35]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but \"is_default_payment_method\"' flag is false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2026\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": false,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-36]- Verify an API behaviour to POST the  payment method with valid Wallet ID and valid data set but \"is_default_payment_method\"' flag is true.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \"user\",\r\n    \"card_type\": \"Visa\",\r\n    \"first_6_digits\": \"123456\",\r\n    \"last_4_digits\": \"1231\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2028\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": true,\r\n    \"is_shared_across_tenants\": false,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-37]- Verify an API behaviour to POST the  payment method with the valid data set  but with expired year",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "Ios",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_method_type\": \"payment-card\",\r\n    \"customer_reference_id_at_payment_provider\": \"gdujeed5237\",\r\n    \"card_holder_name\": \" user 456\",\r\n    \"card_type\": \"MasterCard\",\r\n    \"first_6_digits\": \"456789\",\r\n    \"last_4_digits\": \"2356\",\r\n    \"expiry_month\": \"12\",\r\n    \"expiry_year\": \"2020\",\r\n    \"number_length\": \"16\",\r\n    \"token\": \"4cf09d47-cbd4-449d-8732-30bac0c8f62pqaaabavre\",\r\n    \"payment_provider\": \"global_paymeNTs\",\r\n    \"billing_address\": {\r\n        \"address_id\": \"0090151912aaqy\",\r\n        \"version\": \"2\"\r\n    },\r\n    \"is_default_payment_method\": false,\r\n    \"is_shared_across_tenants\": true,\r\n    \"is_deleted\": true,\r\n    \"is_saved\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET|Payment Method",
+			"item": [
+				{
+					"name": "Payment Domain [TC-01]- Verify an API behaviour to GET all  payment method with the valid data set.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id3}}/payment-methods-redacted",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id3}}",
+								"payment-methods-redacted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-02]- Verify an API behaviour to GET all  payment method with the invalid Wallet ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/564/payment-methods-redacted",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"564",
+								"payment-methods-redacted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-03]- Verify an API behaviour to GET all  payment method with the valid Wallet ID but Device type missing.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}a/payment-methods-redacted",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}a",
+								"payment-methods-redacted"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET |PaymentMethodID",
+			"item": [
+				{
+					"name": "Payment Domain [TC-05]- Verify an API behaviour to GET the  payment method with the valid payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/tosh7865-79351269-8074-472d-873f-664f85fe35f3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"tosh7865-79351269-8074-472d-873f-664f85fe35f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-06]- Verify an API behaviour to GET the  payment method with the valid payment method ID but wrong params.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/{{payment_methodId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"{{payment_methodId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-07]- Verify an API behaviour to GET the  payment method with the Invalid payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/pbEEFIPLUTA5tzz9uJZA123",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"pbEEFIPLUTA5tzz9uJZA123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-08]- Verify an API behaviour to GET the  payment method with the NO  payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-08]- Verify an API behaviour to GET the  payment method with the expired year payment method method id.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/{{expired_yearID}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"{{expired_yearID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-08]- Verify an API behaviour to GET the  payment method with the the flag \"is saved\" as false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/tosh7865-79351269-8074-472d-873f-664f85fe35f3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"tosh7865-79351269-8074-472d-873f-664f85fe35f3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get | Payment Method RedactedByID",
+			"item": [
+				{
+					"name": "Payment Domain [TC-01]- Verify an API behaviour to GET the  payment method with Redacted response with the valid payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods-redacted/{{payment_methodId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods-redacted",
+								"{{payment_methodId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-02]- Verify an API behaviour to GET the  payment method with Redacted response with the valid payment method ID but wrong params.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/{{payment_methodId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"{{payment_methodId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-03]- Verify an API behaviour to GET the  payment method with Redacted response with the Invalid payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/pbEEFIPLUTA5tzz9uJZA123",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"pbEEFIPLUTA5tzz9uJZA123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-04]- Verify an API behaviour to GET the  payment method with Redacted response with the NO  payment method ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-05]- Verify an API behaviour to GET the  payment method with Redacted response with the expired year payment method method id. Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/{{expired_yearID}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"{{expired_yearID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-06]- Verify an API behaviour to GET the  payment method with Redacted response with the the flag \"is saved\" as false.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_id\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_id\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains billing_address\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"billing_address\");",
+									"});",
+									"",
+									"pm.test(\"Response body contains payment_method_type\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"payment_method_type\");",
+									"})",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "text"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/payment-methods/tosh7865-79351269-8074-472d-873f-664f85fe35f3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"payment-methods",
+								"tosh7865-79351269-8074-472d-873f-664f85fe35f3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE | Payment Method",
+			"item": [
+				{
+					"name": "Payment Domain [TC-09]- Verify an API behaviour to DELETE the  payment method with the valid payment method ID and valid Wallet ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/tosh7865/payment-methods/{{payment_methodId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"tosh7865",
+								"payment-methods",
+								"{{payment_methodId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-10]- Verify an API behaviour to DELETE the  payment method with the Invalid payment method ID and Valid Wallet ID .",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"No Payment Method found for payment_method_id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/{{wallet_id}}/payment-methods/LWIAXf7qCI5NRSortwe6457",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"{{wallet_id}}",
+								"payment-methods",
+								"LWIAXf7qCI5NRSortwe6457"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-11]- Verify an API behaviour to DELETE the  payment method with the valid payment method ID but Invalid Wallet ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"No Wallet is available for the input\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/toshimatData/payment-methods/LWIAXf7qCI5NRSortwe6",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"toshimatData",
+								"payment-methods",
+								"LWIAXf7qCI5NRSortwe6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Domain [TC-12]- Verify an API behaviour to DELETE the  payment method with the Invalid payment method ID and Invalid Wallet ID.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", () => {",
+									"  pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"No Wallet is available for the input\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Loblaw-Tenant-ID",
+								"value": "JOE_FRESH",
+								"type": "default"
+							},
+							{
+								"key": "X-Loblaw-Device-Type",
+								"value": "ios",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v1/wallets/toshimaData/payment-methods/LWIAXf7qCI5NRSortwe6457",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"toshimaData",
+								"payment-methods",
+								"LWIAXf7qCI5NRSortwe6457"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

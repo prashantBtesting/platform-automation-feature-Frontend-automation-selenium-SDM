@@ -1,0 +1,121 @@
+stages:
+    - test
+
+Decorator:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-2881]Product-Decorator.postman_collection.json -e Environments/Decorator_QA.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export decorator_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  decorator_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+PCS:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-3029]ProductAndCatalogService.postman_collection.json -e Environments/PCS_DEV.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export pcs_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  pcs_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+Product_Search:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-2884]Product-Search.postman_collection.json -e Environments/Search_QA.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export product_search_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  product_search_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+Inventory:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-3030]-Product-Inventory.postman_collection.json -e Environments/InventoryService.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export inventory_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  inventory_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+Payment:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-2882]Product-Payment.postman_collection.json -e Environments/Payment_QA.json --reporters=htmlextra --reporter-htmlextra-export payments_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  payments_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+Cart:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-2885]Product-Cart.postman_collection.json -e Environments/Cart_QA.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export cart_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  cart_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
+
+CustomerProfile:
+    stage: test
+    image: 
+        name: postman/newman
+        entrypoint: [""]
+    script:
+        - newman --version
+        - npm install -g newman-reporter-htmlextra
+        - newman run Collections/[LDP-2883]-Product-CustomerProfile.postman_collection.json -e Environments/CustomerProfile.postman_environment.json --reporters=htmlextra --reporter-htmlextra-export customerProfile_functional_test_report_$CI_JOB_STARTED_AT.html
+    artifacts:
+        paths:
+            -  customerProfile_functional_test_report_$CI_JOB_STARTED_AT.html
+        when: always
+        name: "report"
+        expose_as: "report"
+        expire_in: 30 days
